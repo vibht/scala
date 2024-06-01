@@ -21,7 +21,6 @@ public class SendIpToClient {
             String message = "ip : '127.0.0.1',dest:'127.0.0.1', active:true, apiCredentials:'CR001A6YX789',port:12345";
             byte[] sendData = message.getBytes();
             DatagramPacket packet = new DatagramPacket(sendData, sendData.length, address, port);
-
             socket.send(packet);
             flag = true;
             if(Boolean.TRUE.equals(flag)){
@@ -30,7 +29,7 @@ public class SendIpToClient {
                 DatagramPacket packetReceive = new DatagramPacket(bufferreceiver, bufferreceiver.length);
 
                 socket.receive(packetReceive);
-                String receivePacket =new String(packet.getData(), 0 , packet.getLength());
+                String receivePacket =new String(packetReceive.getData(), 0 , packetReceive.getLength());
 
                 System.out.println("return packet is"+receivePacket);
             }
@@ -38,7 +37,7 @@ public class SendIpToClient {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("errore are found" + e.getMessage());
+            System.out.println("error are found" + e.getMessage());
             return flag;
 
         }
