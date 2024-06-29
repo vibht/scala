@@ -2,6 +2,9 @@ package com.server.application.scala.helper;
 
 import java.util.concurrent.ThreadFactory;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CustomThreadFactory implements  ThreadFactory {
 
     @Override

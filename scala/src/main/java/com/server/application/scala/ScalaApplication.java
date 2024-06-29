@@ -7,25 +7,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.server.application.scala.backgroundProcess.MskMonitorProcess;
+import com.server.application.scala.entity.MTKModel;
 
 @SpringBootApplication
 @EnableScheduling
 public class ScalaApplication {
 
-
 	public static void main(String[] args) throws InterruptedException {
 		threadProperties();
 		SpringApplication.run(ScalaApplication.class, args);
-		
 
 	}
 
-
-	public static void threadProperties(){
-		MskMonitorProcess pp =new MskMonitorProcess();
+	public static void threadProperties() {
+		MskMonitorProcess pp = new MskMonitorProcess();
 		pp.scheduleTask();
 	}
-	
-	
 
 }

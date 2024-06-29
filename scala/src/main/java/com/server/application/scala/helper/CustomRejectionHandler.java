@@ -3,6 +3,8 @@ package com.server.application.scala.helper;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 
+import org.springframework.stereotype.Component;
+@Component
 public class CustomRejectionHandler  implements RejectedExecutionHandler {
 
     @Override
