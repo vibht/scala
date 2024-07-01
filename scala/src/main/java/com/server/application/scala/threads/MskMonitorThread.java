@@ -3,15 +3,24 @@ package com.server.application.scala.threads;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.server.application.scala.repository.UserserviceRepository;
+
 public class MskMonitorThread implements Runnable {
    private static final Logger logger = LogManager.getLogger(MskMonitorThread.class);
+
+   private UserserviceRepository userServiceRepo;
+
+   public MskMonitorThread(UserserviceRepository userService) {
+      run();
+      this.userServiceRepo =userService;
+   }
 
    @Override
    public void run() {
       Integer count = 0;
 
-      while (count <=3) {
-         
+      while (count <= 3) {
+
          try {
             logger.info("Hello------------");
             count++;

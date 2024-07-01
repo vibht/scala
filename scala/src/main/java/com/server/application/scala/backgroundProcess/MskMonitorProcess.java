@@ -6,16 +6,22 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.server.application.scala.helper.CustomThreadFactory;
+import com.server.application.scala.repository.UserserviceRepository;
+import com.server.application.scala.entity.UserserviceModel;
 import com.server.application.scala.helper.CustomRejectionHandler;
 import com.server.application.scala.threads.MskMonitorThread;
 
 @Service
 public class MskMonitorProcess {
     private static final Logger logger = LogManager.getLogger(MskMonitorProcess.class);
+
+    @Autowired
+    private UserserviceRepository userService;
 
     private final ThreadPoolExecutor executor;
 
@@ -33,7 +39,7 @@ public class MskMonitorProcess {
         executor.execute(() -> {
             try {
                 Thread.sleep(2000);
-                new MskMonitorThread().run();
+                new MskMonitorThread(userService);
             } catch (InterruptedException e) {
                 logger.error("Interrupted Exception", e);
                 Thread.currentThread().interrupt();

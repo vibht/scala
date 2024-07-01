@@ -1,14 +1,11 @@
 package com.server.application.scala.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.server.application.scala.helper.ObjectConverter;
 
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
